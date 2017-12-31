@@ -8,11 +8,43 @@
 		if($_POST["btn_type"] == "signup")
 		{
 			$username = $_POST["username"];
-			$password = $_POST["password"];
+			$password = crypt($_POST["password"],$salt);
+			$name = $_POST["name"];
+
+			$sql = "INSERT INTO users (username, password, name) VALUES (?,?,?)";
+			$rows = query($sql, $username, $password, $name); 
+
+
+			if($rows !== false)
+			{
+				$rows = query("SELECT LAST_INSERT_ID() AS id"); //retrieve last insert id
+				$_SESSION["id"] = $rows[0]["id"]; //store it as session id
+				$_SESSION["name"] = $rows[0]["name"];
+				redirect("index.php"); //reditect to index
+			}
+			else
+			{
+				apologize("There was a problem signing up.");
+			}
 		}
 		else if($_POST["btn_type"] == "login")
 		{
+			$username = $_POST["username"];
+			$password = crypt($_POST["password"],$salt);
 
+			$sql = "SELECT * FROM users WHERE username = ? AND password = ? LIMIT 1";
+			$rows = query($sql, $username, $password);
+
+			if($rows !== [])
+			{
+				$_SESSION["id"] = $rows[0]["user_id"];
+				$_SESSION["name"] = $rows[0]["name"];
+				redirect("index.php");
+			}
+			else
+			{
+				apologize("Incorrect login credentials");
+			}
 		}
 	}
 

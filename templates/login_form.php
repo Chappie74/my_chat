@@ -69,6 +69,12 @@
                     <input type="password" name="password" class="form-control" tabindex="2" required="required" placeholder="Password" />
                   </div>
 
+                  <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" class="form-control" tabindex="3" required="required" placeholder="Name" />
+                  </div>
+
+
                   <div class="row">
                     <div class="col-md-2">
                       <button type="submit" class="btn btn-primary btn-md" name="btn_type" value="signup">Sign Up</button>

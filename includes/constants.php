@@ -10,7 +10,7 @@
      */
 
     // your database's name
-    define("DATABASE", "farmland");
+    define("DATABASE", "chat_app");
 
     // your database's password
     define("PASSWORD", "");

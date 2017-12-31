@@ -5,7 +5,7 @@
             <hr>
             <div id="footer_notice">
             	
-                Copyright &#169; Farmland Inc.
+                Copyright &#169; CHAT APP
                 
             </div>
         </div>   
